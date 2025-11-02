@@ -22,11 +22,10 @@ function generateMotivation(event) {
   let motivationElement = document.querySelector("#motivation");
   motivationElement.classList.remove("hidden");
   motivationElement.innerHTML = `<div class="generating">⏳ Generating a motivation about ${userGuideInput.value}</div>`;
-  axios
-    .get(apiURL)
-    .then(displayMotivation)
-    .catch((err) => {
-      motivationElement.innerHTML = `<div class="error">❌ Error generating motivation. Please try again.</div>`;
-      console.error(err);
-    });
+
+  axios.get(apiURL).then(displayMotivation);
 }
+let motivationFormElement = document.querySelector(
+  "#motivation-generator-form"
+);
+motivationFormElement.addEventListener("submit", generateMotivation);
